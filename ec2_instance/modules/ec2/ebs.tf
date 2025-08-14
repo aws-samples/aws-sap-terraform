@@ -10,7 +10,7 @@ resource "aws_ebs_volume" "all_volumes" {
   kms_key_id = data.aws_ssm_parameter.ebs_kms.value
   encrypted  = true
 
-  tags = {
+  tags = merge(var.ec2_tags, {
     Name             = "ebs-${var.hostname}"
     disk-identifier  = each.value.identifier
     disk-index       = each.value.disk_index
@@ -19,7 +19,7 @@ resource "aws_ebs_volume" "all_volumes" {
     application-code = var.application_code
     sid              = var.application_SID
     backup-policy    = each.value["identifier"]
-  }
+  })
 
 }
 

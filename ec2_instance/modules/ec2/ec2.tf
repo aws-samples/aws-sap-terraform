@@ -11,10 +11,7 @@ resource "aws_instance" "this" {
     device_index         = 0
   }
 
-  tags = {
-    Name    = var.hostname
-    AppCode = var.application_code
-  }
+  tags = merge(var.ec2_tags, {Name = var.hostname, AppCode = var.application_code})
 
   metadata_options {
     http_endpoint = "enabled"

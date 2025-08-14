@@ -5,8 +5,7 @@ resource "aws_network_interface" "this" {
   security_groups   = [var.application_code == "hana" ? data.aws_ssm_parameter.ec2_hana_sg.value : data.aws_ssm_parameter.ec2_nw_sg.value]
   source_dest_check = var.application_code == "hana" ? false : true
 
-  tags = {
+  tags = merge(var.ec2_tags,{
     Name = var.hostname
-    Test = "test"
-  }
+  })
 }
