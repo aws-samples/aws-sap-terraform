@@ -161,7 +161,7 @@ instances_to_create = {
 |application_SID|SAP system SID |D01|Yes
 |ha|Determines if instance will be part of a High Availability cluster. If it's true, will create the instance with an IAM role with broader permissions, required for HA. If it's false, the permissions given are narrower |true|Yes
 |ami_ID|AMI ID to be used for instance creation |ami-01ee0f5d6dfe22e54|Yes
-|key_name|Name of KMS CMK alias for EBS encryption |mycmk|Yes
+|key_name|Name of EC2 key pair to SSH into the instance |mycmk|Yes
 |monitoring|If set to true, enables detailed monitoring |false|Yes
 |root_ebs_size|Size of root EBS volume (in GiBs) |80|Yes
 |ec2_tags|Key value map with EC2 tags common to all SAP instances | { "app"= "SAP", "cost_center"= "12345" } |No
